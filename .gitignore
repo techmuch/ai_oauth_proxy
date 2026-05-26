@@ -1,0 +1,13 @@
+# Compiled binaries
+ai_oauth_proxy
+
+# Testing outputs
+coverage.out
+coverage.html
+
+# Dependency directories
+vendor/
+
+# System files
+.DS_Store
+EOF
