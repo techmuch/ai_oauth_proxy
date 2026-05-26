@@ -10,16 +10,16 @@ It features thread-safe token tracking and cost projection middleware, dual-mode
 
 ```mermaid
 graph TD
-    subgraph Client Apps
+    subgraph "Client Apps"
         Harness[Hermes/OpenAI Client]
     end
-    subgraph Proxy App (Go Binary)
+    subgraph "Proxy App (Go Binary)"
         Server[HTTP Server Mode]
         TUI[Chat/TUI Mode]
         Engine[Translation & Subprocess Manager]
         Tracker[Token Tracker / Session Metrics]
     end
-    subgraph Local Environment
+    subgraph "Local Environment"
         Claude[Claude Code CLI /root/.local/bin/claude]
     end
 
