@@ -135,6 +135,47 @@ Launches the full interactive terminal chat UI:
 
 ---
 
+## Hermes Harness Configuration
+
+To point your **Hermes Agent** or other OpenAI-compatible harness to use this proxy server, use one of the following configuration options:
+
+### Option 1: Setup Wizard (Recommended)
+Run the setup command from your Hermes installation and select the custom OpenAI option:
+```bash
+hermes setup
+```
+- Select **"Custom OpenAI-compatible endpoint"** when prompted.
+- Provide the API base URL: `http://localhost:8080/v1` (ensure the `/v1` suffix is appended).
+- Provide a dummy API Key (e.g., `dummy_token` or `sk-local`). The proxy strips this safely, but Hermes requires a value to satisfy validation.
+
+### Option 2: Config Files Direct Update
+You can edit the Hermes configurations manually:
+1. Open your config file `~/.hermes/config.yaml` and specify:
+   ```yaml
+   model:
+     provider: "custom"
+     base_url: "http://localhost:8080/v1"
+     name: "claude-sonnet-4-6"
+   ```
+2. Add a dummy key in your `~/.hermes/.env` environment file:
+   ```text
+   API_KEY=dummy_token
+   ```
+
+### Option 3: Config via CLI Commands
+Run the CLI configuration command to target your local server:
+```bash
+hermes config set base_url "http://localhost:8080/v1"
+```
+
+Verify the configuration state at any time:
+```bash
+hermes config
+hermes doctor
+```
+
+---
+
 ## Testing
 
 Run the automated test suite to verify module mechanics:
